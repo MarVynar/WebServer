@@ -7,6 +7,7 @@ class WebServer {
     void serve();
 
   private:
+    void serveClient(int client_socket);
     int server_socket;
 };
 
