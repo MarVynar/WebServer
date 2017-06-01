@@ -37,14 +37,14 @@ void Handler::doGet(){
  //   msg="Bo";
       // strcpy(msg, replytext.c_str());
     //cout<< "StrCpied\n";
-      // send(dest_socket, msg, strlen(msg), MSG_PEEK);
+      // send(dest_socket, msg, sizeof(msg), MSG_PEEK);
 } //if
   else{ replytext= "Sorry, buddy, there is no such file " + path;
      std:: cout << replytext << endl;
       // char* msg;
     //   strcpy(msg, replytext.c_str());
      //  send(dest_socket, msg, strlen(msg), MSG_PEEK);
-  //     rep->sendReply(replytext);
+ 
       }// else
   
   
@@ -80,13 +80,13 @@ void Handler::doPost(){
         replytext= "<HTML> <HEAD><TITLE>" +path+ "</TITLE></HEAD><BODY>File rewritten</BODY></HTML>" ;
    // char* msg;
     //   strcpy(msg, replytext.c_str());
-     //  send(dest_socket, msg, strlen(msg), MSG_PEEK);
+     //  send(dest_socket, msg, sizeof(msg), MSG_PEEK);
 } //if
   else{ replytext= "Sorry, buddy, there is no such file " + path;
        cout << replytext << endl;
        // char* msg;
     //   strcpy(msg, replytext.c_str());
-     //  send(dest_socket, msg, strlen(msg), MSG_PEEK);
+     //  send(dest_socket, msg, sizeof(msg), MSG_PEEK);
       }// else
   
   
