@@ -11,10 +11,11 @@
 #include <fstream>
 #include <vector>
 #include <thread>
+#include <unistd.h>
 
 using namespace std;
 
-WebServer::WebServer(int port){
+WebServer::WebServer(int port, const Handler &handler_in): handler(handler_in){
   server_socket = socket(AF_INET, SOCK_STREAM, 0);
 
   sockaddr_in local_addr;
@@ -47,6 +48,12 @@ void WebServer::serveClient(int client_socket){
     std::cout << " size: " << recieved << "\n";
     request += buffer;
   }
+  Request r(request);
+  Response response = handler.processRequest(r);
+  std::string response_str = response.toString();
+  std::cout << response_str << "\n";
+  send(client_socket, response_str.c_str(), response_str.size(), 0);
+  close(client_socket);
 }
 
 void WebServer::serve(){

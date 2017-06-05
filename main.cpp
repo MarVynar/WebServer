@@ -1,8 +1,12 @@
 #include "MyWebServer.h"
+#include "handler.h"
 
 int main()
 {
-  WebServer server(9999);
-  server.serve();
+  Handler handler(".");
+
+  
+ WebServer server(9999, handler);
+ server.serve();
   return 0;
 }

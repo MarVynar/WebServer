@@ -14,7 +14,7 @@ class Handler{
 
   
   Response doGet(const Request &req);
-  //Response doPost(Request req);
+  Response doPost(const Request &req);
   
 };
 
