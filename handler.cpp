@@ -24,7 +24,6 @@ Response Handler::doGet(const Request &req){
     std::string temp;
    // ifile.read(file_body, sizeof(file_body));
     while(ifile) {ifile>>temp; file_body+=temp;}
-    //return Response(200, "dsfdsgfdgfdgdfgbsfdkgsdkgsdkfjgk"); 
     return Response(200, file_body); 
   }else{
    return Response(404, "Not Found"); 
@@ -36,10 +35,10 @@ Response Handler::doPost(const Request &req){
   std::cout << "Opening file: '" << root_dir+req.path << "'\n";
   std::ofstream ofile (root_dir+req.path);
   if(ofile.good()){
-    std::string test_text=" Test Text";
-    ofile << test_text;
     
+    ofile << req.body;    
     return Response(200, "File is written"); 
+    
   }else{
    return Response(404, "Not Found"); 
   }
